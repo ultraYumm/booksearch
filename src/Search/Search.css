@@ -1,0 +1,25 @@
+
+.searchBox {
+    box-sizing: border-box;
+    font: black;
+    text-align: center;
+    border-top: solid #5B6DCD 1px;
+    margin-top:400px;
+    height: 100px;
+    background-color: rgb(143, 140, 140);
+    font-size: 12px;
+    padding-top: 15px;
+  
+  }
+
+  .typeBox {
+    border-top: solid #5B6DCD 1px;
+    border-bottom: solid #5B6DCD 1px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50%;
+    height: 100px;
+    background-color: rgb(189, 188, 188);
+    font-size: 12px;
+    padding-top: 10px;
+ }

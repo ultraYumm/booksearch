@@ -11,10 +11,10 @@ class BookList extends React.Component {
     
         return (
         <ul className="bookSummary">            
-        <li className="title">Title</li>
-        <li>Author</li>
-        <li>Price:</li>
-        <li><img src="" alt="Cover image" /><a href="http://www.google.com" title="Click for further details">Description</a></li>
+        <li className="title">{this.props.title}</li>
+        <li>{this.props.author}</li>
+        <li>{this.props.price}</li>
+         <li><img src={this.props.image} alt="Cover image" /><a href={this.props.preview} title="Click for further details">{this.props.description}</a></li>
          </ul>
 
         );

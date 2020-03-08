@@ -17,13 +17,17 @@ class SearchBox extends React.Component {
                 </div>
               <div className="typeBox">
                 <PrintType
-                key = {this.props.store.items.id}
+                key = {this.props.key}
                 store = {this.props.store}
+                items = {this.props.items}
+                printType = {this.props.printType}
                 /></div>
               <div className="typeBox">
                <Category
-                key = {this.props.store.items.id}
-                store = {this.props.store}
+               key = {this.props.key}
+               store = {this.props.store}
+               items = {this.props.items}
+               category = {this.props.category}
                 /></div>
          </div>
         )

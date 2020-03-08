@@ -33,6 +33,19 @@ class App extends Component {
   render() {
     
     const store = this.state.store
+    
+    const key = store && store.items && store.items.map(item =>
+      (item.id))
+    
+    const printType = store && store.items && store.items.map(item =>
+        (item.saleInfo.isEbook))
+      
+    const category = store && store.items && store.items.map(item =>
+      (item.volumeInfo.categories))
+      
+    
+
+    
 
     return (
       
@@ -40,11 +53,12 @@ class App extends Component {
        <header><Header /></header>
     
        <div>
-         
-         <SearchBox
-         store = {store}
-         />
-       
+       <SearchBox
+      store = {store}
+      key = {key}
+      printType = {printType}
+      category = {category}
+      />
        
        </div>
     

@@ -7,29 +7,31 @@ class Category extends React.Component {
 
     
   render() {
-    const category = this.props.store.items.map(item =>
-            <option value={item.volumeInfo.categories} key={item.id}>{item.volumeInfo.categories}</option>
+    
+        return (
+            <form>
+              <label htmlFor="category">Category</label>
+              <select id="category" name="category">
+               <option value="No filter">No filter</option>
+               {this.props.category}
+               </select>
+            </form>
           );
-    return (
-       <form>
-          <label htmlFor="category">Category</label>
-          <select id="category" name="category">
-            <option value="No filter">No filter</option>
-            {category}
-          </select>
-        </form>
-    );      
-  }
-}
+      }
 
+    }
 
-Category.defaultProps = {
-  countries: []
-};
     
 
 
 export default Category;
 
 
-               
+               /* <select
+                id="country"
+                name="country"
+                onChange={e => this.changeSelection(e.target.value)}>
+                <option value="No filter"></option>
+                {options}
+              </select> */
+            

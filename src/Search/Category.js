@@ -7,19 +7,25 @@ class Category extends React.Component {
 
     
   render() {
-    
-        return (
-            <form>
-              <label htmlFor="category">Category</label>
-              <select id="category" name="category">
-               <option value="No filter">No filter</option>
-               {this.props.category}
-               </select>
-            </form>
-          );
-      }
+    const catOptions = this.props.category.map(item =>
+      <option value={this.props.category} key={this.props.category}>{this.props.category}</option>
+    );
+return (
+ <form>
+    <label htmlFor="category">Category</label>
+    <select 
+    id="category" 
+    name="category"
+    //onChange={e => this.changeSelection(e.target.value)}
+    >
+      <option value="No filter">No filter</option>
+      {catOptions}
+    </select>
+  </form>
+);      
+}
+}
 
-    }
 
     
 
@@ -35,3 +41,20 @@ export default Category;
                 {options}
               </select> */
             
+             /* return (
+                <form>
+                  <label htmlFor="category">Category</label>
+                  <select 
+                  id="category" 
+                  name="category"
+                  //onChange={e => this.props.changeSelection(e.target.value)}
+                  >
+                   <option value="No filter">No filter</option>
+                   {this.props.category}
+                   </select>
+                </form>
+              );
+          }
+    
+        }*/
+    

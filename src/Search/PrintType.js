@@ -7,17 +7,21 @@ class PrintType extends React.Component {
   
   render() {
     
-    function eBook ({printType}) {
+    /*function eBook ({printType}) {
       if ({printType}==="true") {return "Yes";
     } else {return "No"}
 
-    }
+    }*/ 
               
         
     return (
        <form>
           <label htmlFor="printType">Print Type</label>
-          <select id="printType" name="printType">
+          <select 
+          id="printType"
+          name="printType"
+          //onChange={e => this.props.changeSelection(e.target.value)}
+          >
             <option value="All">All</option>
             {this.props.printType}
           </select>

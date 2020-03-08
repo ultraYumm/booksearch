@@ -7,28 +7,42 @@ import PrintType from './PrintType';
 
 class SearchBox extends React.Component {
 
+
+  /*changeSelection(value) {
+    if(value === "None") {
+      this.props.changeHandler(null);
+    } else {
+      const catSelected = this.props.category.find(catSelected => catSelected === value);
+      this.props.changeHandler(catSelected);
+      const printSelected = this.props.printType.find(printSelected => printSelected === value);
+      this.props.changeHandler(printSelected);
+    }
+  }*/
     
   render() {
 
         return (
          <div>
               <div className="searchBox">
-                <SearchInput/>
+                <SearchInput
+                handleOnChange = {this.props.handleOnChange}
+                />
                 </div>
               <div className="typeBox">
                 <PrintType
                 key = {this.props.key}
                 store = {this.props.store}
-                items = {this.props.items}
+                //changeSelection = {this.changeSelection}
                 printType = {this.props.printType}
-                /></div>
+              /></div>
               <div className="typeBox">
-               <Category
-               key = {this.props.key}
-               store = {this.props.store}
-               items = {this.props.items}
-               category = {this.props.category}
-                /></div>
+              {this.props.category &&
+              <Category
+                key={this.props.key}
+                store={this.props.store}
+                //changeSelection = {this.changeSelection}
+                category={this.props.category}
+              />}</div>
          </div>
         )
   }

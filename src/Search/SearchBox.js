@@ -1,8 +1,8 @@
 import React from "react";
 import "./Search.css";
 import SearchInput from './SearchInput';
+import Category from './Category';
 import PrintType from './PrintType';
-import BookType from './BookType';
 
 
 class SearchBox extends React.Component {
@@ -16,9 +16,15 @@ class SearchBox extends React.Component {
                 <SearchInput/>
                 </div>
               <div className="typeBox">
-                <PrintType/></div>
+                <PrintType
+                key = {this.props.store.items.id}
+                store = {this.props.store}
+                /></div>
               <div className="typeBox">
-               <BookType/></div>
+               <Category
+                key = {this.props.store.items.id}
+                store = {this.props.store}
+                /></div>
          </div>
         )
   }

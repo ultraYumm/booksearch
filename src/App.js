@@ -4,27 +4,52 @@ import './App.css';
 import Header from './Header';
 import SearchBox from './Search/SearchBox';
 import BookList from './BookList';
+
 //import Stringify from 'react-stringify';
  
 
 class App extends Component {
 
-  static defaultProps = {
-    store: {
-      items: [],
-      }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+     store: [],
+     selected: null
+    };
+  }
+
+    
+  componentDidMount() {
+    fetch('https://www.googleapis.com/books/v1/volumes?q=harry+potter')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({store: data})
+
+      });
+  }
+ 
 
   render() {
-    const { store } = this.props
+    
+    const store = this.state.store
+
     return (
+      
       <main className="App">
        <header><Header /></header>
-
-       <div><SearchBox/></div>
-
+    
+       <div>
+         
+         <SearchBox
+         store = {store}
+         />
+       
+       
+       </div>
+    
         <div>
-          {store.items.map(item =>(
+          {store && store.items && store.items.map(item =>(
              <BookList
              key = {item.id}
              title = {item.volumeInfo.title}
@@ -34,7 +59,7 @@ class App extends Component {
              description = {item.volumeInfo.description}
              preview = {item.volumeInfo.previewLink}
              />
-
+    
           ))}        
           
         </div>
@@ -42,8 +67,7 @@ class App extends Component {
        
       </main>
     );
-  }
-}
-
-export default App;
-
+    }
+    }
+    
+    export default App;

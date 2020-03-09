@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
      store: null,
      selected: null,
-     searchValue: '',
+     searchValue: "",
     };
   }
 
@@ -28,13 +28,14 @@ class App extends Component {
 
  
 
-  componentDidMount = searchInput => {
+  makeApiCall = searchInput => {
     var searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
     fetch(searchUrl)
       .then(response => response.json())
       .then(data => {
         console.log(data)
         this.setState({store: data})
+        console.log(searchUrl)
 
       });
   }
@@ -43,7 +44,7 @@ class App extends Component {
     this.setState({ searchValue: event.target.value });
     };
 
-  handleSearch = () => {this.componentDidMount(this.state.searchValue)
+  handleSearch = () => {this.makeApiCall(this.state.searchValue)
     }
 
   render() {
@@ -88,3 +89,4 @@ class App extends Component {
     }
     
     export default App;
+

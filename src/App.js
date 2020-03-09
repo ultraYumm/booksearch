@@ -14,19 +14,23 @@ class App extends Component {
     super(props);
     this.state = {
      store: null,
-     selected: null
-     //searchValue: '',
+     selected: null,
+     searchValue: '',
     };
   }
 
-  /*setSelected(selected) {
+  setSelected(selected) {
     this.setState({
       selected
     });
-  }*/
-    
-  componentDidMount() {
-    fetch('https://www.googleapis.com/books/v1/volumes?q=harry+potter')
+  }
+  
+
+ 
+
+  componentDidMount = searchInput => {
+    var searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
+    fetch(searchUrl)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -35,27 +39,23 @@ class App extends Component {
       });
   }
   
-  /*handleOnChange = event => {
+  searchOnChange = event => {
     this.setState({ searchValue: event.target.value });
-    };*/
+    };
+
+  handleSearch = () => {this.componentDidMount(this.state.searchValue)
+    }
 
   render() {
     
     const store = this.state.store
 
-    //const value = this.state.searchValue
+    const value = this.state.searchValue
     
     const key = store && store.items && store.items.map(item =>
       (item.id))
     
-    const printType = store && store.items && store.items.map(item =>
-        (item.saleInfo.isEbook))//.toString()
-      
-    const category = store && store.items && store.items.map(item =>
-      (item.volumeInfo.categories))//.toString()
-   
-      //console.log(items)
-
+    
     return (
       
       <main className="App">
@@ -65,11 +65,10 @@ class App extends Component {
        <SearchBox
       store = {store}
       key = {key}
-      //printType = {printType}
-      //category = {category}
-      //changeHandler={selected => this.setSelected(selected)}
-      //value = {value}
-      //handleOnChange = {this.handleOnChange}
+      changeHandler={selected => this.setSelected(selected)}
+      value = {value}
+      searchOnChange = {this.searchOnChange}
+      handleSearch ={this.handleSearch}
       />
        
        </div>
@@ -78,8 +77,7 @@ class App extends Component {
        {store &&
         store.items &&
         store.items.map(item => <BookList item={item} />)}
-    
-          ))}        
+   
           
         </div>
        
@@ -90,13 +88,3 @@ class App extends Component {
     }
     
     export default App;
-
-    /*<SearchBox
-      store = {store}
-      key = {key}
-      printType = {printType}
-      category = {category}
-      //changeHandler={selected => this.setSelected(selected)}
-      //value = {value}
-      //handleOnChange = {this.handleOnChange}
-      />*/

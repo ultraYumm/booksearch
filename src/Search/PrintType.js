@@ -7,34 +7,37 @@ class PrintType extends React.Component {
   
   render() {
     
-    /*function eBook ({printType}) {
-      if ({printType}==="true") {return "Yes";
-    } else {return "No"}
+    const printType = this.props.store.items.map(item => item.saleInfo.isEbook)//.toString();
+    console.log(printType)
 
-    }*/ 
-              
-        
+    
+    
+
+    function eBook (){ if (printType === "True") {
+      return "Ebook"}
+    } 
+    
+    console.log(eBook)
+
+    
+    
     return (
-       <form>
-          <label htmlFor="printType">Print Type</label>
-          <select 
-          id="printType"
-          name="printType"
-          //onChange={e => this.props.changeSelection(e.target.value)}
-          >
-            <option value="All">All</option>
-            {this.props.printType}
-          </select>
-        </form>
+     <form>
+        <label htmlFor="PrintType">Print Type</label>
+        <select 
+        id="Print Type" 
+        name="Print Type"
+        //onChange={e => this.changeSelection(e.target.value)}
+        >
+          <option value="No filter">All</option>
+          <option>{printType}</option>
+        </select>
+      </form>
     );      
-  }
-}
+    }
+    }
 
  
-
-PrintType.defaultProps = {
-  PrintType: []
-};
 
 
     

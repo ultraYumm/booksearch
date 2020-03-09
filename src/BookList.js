@@ -2,6 +2,11 @@ import React from "react";
 import "./App.css";
 import "./BookList.css";
 
+const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD'
+});
+
 
 
 class BookList extends React.Component {
@@ -21,7 +26,7 @@ class BookList extends React.Component {
         
         {item.volumeInfo.authors && (<li>{item.volumeInfo.authors[0]}</li>)}
         
-        {item.saleInfo.retailPrice && (<li>{item.saleInfo.retailPrice.amount}</li>)}
+        {item.saleInfo.retailPrice && (<li>{USCurrencyFormat.format(item.saleInfo.retailPrice.amount.toString())}</li>)}
         
          {item.volumeInfo.imageLinks && item.volumeInfo.previewLink && item.volumeInfo.description &&(<li><img src={this.props.item.volumeInfo.imageLinks.thumbnail} alt="Cover" /><a href={this.props.item.volumeInfo.previewLink} title="Click for further details">{this.props.item.volumeInfo.description}</a></li>)}
          

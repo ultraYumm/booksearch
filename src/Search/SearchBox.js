@@ -20,6 +20,9 @@ class SearchBox extends React.Component {
   }*/
     
   render() {
+    
+    const item = this.props.item;
+    console.log("ITEM:", item);
 
         return (
          <div>
@@ -29,26 +32,31 @@ class SearchBox extends React.Component {
                 />
                 </div>
               <div className="typeBox">
-                <PrintType
-                key = {this.props.key}
-                store = {this.props.store}
-                //changeSelection = {this.changeSelection}
-                printType = {this.props.printType}
-              /></div>
-              <div className="typeBox">
-              {this.props.category &&
+              {this.props.store &&
               <Category
                 key={this.props.key}
                 store={this.props.store}
+                //item = {item}
                 //changeSelection = {this.changeSelection}
-                category={this.props.category}
-              />}</div>
+                //category={this.props.category}
+               />}</div>
          </div>
         )
   }
 }
 
 export default SearchBox;
+
+/*<div className="typeBox">
+<PrintType
+key = {this.props.key}
+store = {this.props.store}
+//changeSelection = {this.changeSelection}
+printType = {this.props.printType}
+/></div>*/
+
+
+
 
 /*<div className="searchBox">
 <SearchInput/>

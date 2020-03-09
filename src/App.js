@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     store: [],
+     store: null,
      selected: null
      //searchValue: '',
     };
@@ -65,8 +65,8 @@ class App extends Component {
        <SearchBox
       store = {store}
       key = {key}
-      printType = {printType}
-      category = {category}
+      //printType = {printType}
+      //category = {category}
       //changeHandler={selected => this.setSelected(selected)}
       //value = {value}
       //handleOnChange = {this.handleOnChange}
@@ -75,17 +75,9 @@ class App extends Component {
        </div>
     
        <div>
-          {store && store.items && store.items.map(item =>(
-             <BookList
-             key = {item.id}
-             title = {item.volumeInfo.title}
-             author = {item.volumeInfo.authors}
-             //price = {item.saleInfo.retailPrice.amount}
-             //price = {JSON.stringify(item.saleInfo.retailPrice.amount)}
-             image = {item.volumeInfo.imageLinks.thumbnail}
-             description = {item.volumeInfo.description}
-             preview = {item.volumeInfo.previewLink}
-             />
+       {store &&
+        store.items &&
+        store.items.map(item => <BookList item={item} />)}
     
           ))}        
           
@@ -98,3 +90,13 @@ class App extends Component {
     }
     
     export default App;
+
+    /*<SearchBox
+      store = {store}
+      key = {key}
+      printType = {printType}
+      category = {category}
+      //changeHandler={selected => this.setSelected(selected)}
+      //value = {value}
+      //handleOnChange = {this.handleOnChange}
+      />*/

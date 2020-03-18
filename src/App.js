@@ -16,7 +16,9 @@ class App extends Component {
      store: null,
      selected: null,
      searchValue: "",
-    };
+        };
+    //this.handleSearch = this.handleSearch.bind(this);
+    //this.searchOnChange = this.searchOnChange.bind(this);
   }
 
   setSelected(selected) {
@@ -25,8 +27,6 @@ class App extends Component {
     });
   }
   
-
- 
 
   makeApiCall = searchInput => {
     var searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
@@ -40,18 +40,17 @@ class App extends Component {
       });
   }
   
-  searchOnChange = event => {
-    this.setState({ searchValue: event.target.value });
-    };
+  
 
-  handleSearch = () => {this.makeApiCall(this.state.searchValue)
+  handleSearch = (searchValue) => {
+    this.makeApiCall(searchValue)
     }
 
   render() {
     
     const store = this.state.store
 
-    const value = this.state.searchValue
+   // const value = this.state.searchValue
     
     const key = store && store.items && store.items.map(item =>
       (item.id))
@@ -67,8 +66,6 @@ class App extends Component {
       store = {store}
       key = {key}
       changeHandler={selected => this.setSelected(selected)}
-      value = {value}
-      searchOnChange = {this.searchOnChange}
       handleSearch ={this.handleSearch}
       />
        
@@ -89,4 +86,5 @@ class App extends Component {
     }
     
     export default App;
-
+    
+    

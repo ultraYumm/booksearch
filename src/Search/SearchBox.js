@@ -17,32 +17,18 @@ class SearchBox extends React.Component {
 
         return (
          <div>
+
+
+  
               <div className="searchBox">
         
                 <SearchInput
-                 value = {this.props.value}
-                 searchOnChange = {this.props.searchOnChange}
                  handleSearch = {this.props.handleSearch}
                 />
-                </div>
-               
-               <div className="typeBox">
-               {this.props.store &&
-               <PrintType
-                 key = {this.props.key}
-                 store = {this.props.store}
-                 changeHandler = {this.props.changeHandler}
+               </div>
 
-                 />}</div>
-
-              <div className="typeBox">
-              {this.props.store &&
-              <Category
-                  key={this.props.key}
-                  store={this.props.store}
-                  changeHandler = {this.props.changeHandler}
-
-                />}</div>
+                
+              
         
          </div>
         )
@@ -51,3 +37,20 @@ class SearchBox extends React.Component {
 
 export default SearchBox;
 
+/*<div className="typeBox">
+{this.props.store &&
+<PrintType
+  key = {this.props.key}
+  store = {this.props.store}
+  changeHandler = {this.props.changeHandler}
+
+  />}</div>
+
+<div className="typeBox">
+{this.props.store &&
+<Category
+   key={this.props.key}
+   store={this.props.store}
+   changeHandler = {this.props.changeHandler}
+
+ />}</div>*/

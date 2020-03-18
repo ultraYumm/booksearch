@@ -8,6 +8,15 @@ class Category extends React.Component {
 render() {
 
   
+/*changeSelection = (value) => {
+    if (value === "None") {
+      this.props.changeHandler(null);
+    } else {
+      const catSelected = this.categories.find(catSelected => catSelected === value);
+      this.props.changeHandler(catSelected);
+      
+    }
+  }*/
 
 const items = this.props.store.items.filter(item => item.volumeInfo.categories);
 const categoriesWithDuplicatesArray = items.map(item => {
@@ -21,16 +30,6 @@ const categories = removedDuplicatesArray.map(item => {
     <option>{item}</option>
   )
 })  
-function changeSelection(value) {
-  if (value === "None") {
-    this.props.changeHandler(null);
-  } else {
-    const catSelected = this.categories.find(catSelected => catSelected === value);
-    this.props.changeHandler(catSelected);
-    
-  }
-}
-
 
 console.log(categories)
 
